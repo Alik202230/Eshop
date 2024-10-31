@@ -80,7 +80,7 @@ public class ProductService {
     return totalQuantity;
   }
 
-  public double getMaxOfProducts() {
+  public double getMaxPriceOfProducts() {
     String sql = "SELECT MAX(price) AS maxPrice FROM product";
     int maxPrice = 0;
     try (Statement statement = connection.createStatement()) {
@@ -95,7 +95,7 @@ public class ProductService {
     return maxPrice;
   }
 
-  public double getMinOfProducts() {
+  public double getMinPriceOfProducts() {
     String sql = "SELECT MIN(price) AS minPrice FROM product";
     double minPrice = 0;
     try (Statement statement = connection.createStatement()) {
@@ -110,7 +110,7 @@ public class ProductService {
     return minPrice;
   }
 
-  public double getAvgOfProducts() {
+  public double getAvgPriceOfProducts() {
     String sql = "SELECT AVG(price) AS avgPrice FROM product";
     double avgPrice = 0;
     try (Statement statement = connection.createStatement()) {

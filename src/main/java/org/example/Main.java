@@ -44,29 +44,29 @@ public class Main {
           printSumOfProduct();
           break;
         case "8":
-          printMaxOfProduct();
+          printMaxPriceOfProduct();
           break;
         case "9":
-          printMinOfProduct();
+          printMinPriceOfProduct();
           break;
         case "10":
-          printAvgOfProduct();
+          printAvgPriceOfProduct();
       }
     }
   }
 
-  private static void printAvgOfProduct() {
-    double avgPrice = productService.getAvgOfProducts();
+  private static void printAvgPriceOfProduct() {
+    double avgPrice = productService.getAvgPriceOfProducts();
     System.out.println("The average price is: " + avgPrice);
   }
 
-  private static void printMinOfProduct() {
-    double minPrice = productService.getMinOfProducts();
+  private static void printMinPriceOfProduct() {
+    double minPrice = productService.getMinPriceOfProducts();
     System.out.println("Min price: " + minPrice);
   }
 
-  private static void printMaxOfProduct() {
-    double maxPrice = productService.getMaxOfProducts();
+  private static void printMaxPriceOfProduct() {
+    double maxPrice = productService.getMaxPriceOfProducts();
     System.out.println("Max price: " + maxPrice);
   }
 
