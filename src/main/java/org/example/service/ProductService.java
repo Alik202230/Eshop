@@ -21,7 +21,7 @@ public class ProductService {
         product.setId(id);
       }
     } catch (SQLException e) {
-      throw new RuntimeException(e);
+      throw new RuntimeException(e.getMessage());
     }
   }
 
