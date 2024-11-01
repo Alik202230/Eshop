@@ -19,7 +19,7 @@ public class CategoryService {
         category.setId(resultSet.getInt(1));
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      throw new RuntimeException(e.getMessage());
     }
   }
 
@@ -34,7 +34,7 @@ public class CategoryService {
         );
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      throw new RuntimeException(e.getMessage());
     }
     return null;
   }
@@ -46,7 +46,7 @@ public class CategoryService {
       statement.setString(2, category.getName());
       statement.executeUpdate();
     } catch (SQLException e) {
-      e.printStackTrace();
+      throw new RuntimeException(e.getMessage());
     }
   }
 
@@ -55,7 +55,7 @@ public class CategoryService {
     try {
       connection.createStatement().executeUpdate(sql);
     } catch (SQLException e) {
-      e.printStackTrace();
+      throw new RuntimeException(e.getMessage());
     }
   }
 
