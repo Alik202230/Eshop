@@ -7,7 +7,7 @@ import java.sql.*;
 
 public class CategoryService {
 
-  private Connection connection = SQLConnectionProvider.getInstance().getConnection();
+  private final Connection connection = SQLConnectionProvider.getInstance().getConnection();
 
   public void add(Category category) {
     String sql = "INSERT INTO category (name) VALUES (?)";
@@ -41,7 +41,7 @@ public class CategoryService {
 
   public void updateCategoryById(Category category, int id) {
     String sql = "UPDATE category SET name = ? WHERE id = " + id;
-    try (PreparedStatement statement = connection.prepareStatement(sql)) {
+    try(PreparedStatement statement = connection.prepareStatement(sql)) {
       statement.setInt(1, category.getId());
       statement.setString(2, category.getName());
       statement.executeUpdate();
