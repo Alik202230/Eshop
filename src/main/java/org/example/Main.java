@@ -87,10 +87,6 @@ public class Main {
     int productId = Integer.parseInt(scanner.nextLine());
     Product product = productService.getProductById(productId);
 
-    if (product == null) {
-      System.out.println("Product not found.");
-    }
-
     if (!product.getName().isEmpty()) product.setName(product.getName());
     if (!product.getDescription().isEmpty()) product.setDescription(product.getDescription());
     if (product.getPrice() != 0) product.setPrice(product.getPrice());
