@@ -28,9 +28,9 @@ public class SQLConnectionProvider {
   public Connection getConnection() {
     try {
       if (connection == null || connection.isClosed()) {
-        String JDBC_USERNAME = "root";
-        String JDBC_URL = "jdbc:mysql://localhost:3306/eshop_db";
-        String JDBC_PASSWORD = "root";
+        final String JDBC_USERNAME = "root";
+        final String JDBC_URL = "jdbc:mysql://localhost:3306/eshop_db";
+        final String JDBC_PASSWORD = "root";
         connection = DriverManager.getConnection(JDBC_URL, JDBC_USERNAME, JDBC_PASSWORD);
       }
     } catch (SQLException e) {
