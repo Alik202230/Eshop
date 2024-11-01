@@ -7,8 +7,8 @@ import java.sql.*;
 
 public class ProductService {
 
-  private Connection connection = SQLConnectionProvider.getInstance().getConnection();
-  private CategoryService categoryService = new CategoryService();
+  private final Connection connection = SQLConnectionProvider.getInstance().getConnection();
+  private final CategoryService categoryService = new CategoryService();
 
   public void add(Product product) {
     String sql = "INSERT INTO product(name, description, price, quantity, category_id) VALUES(?,?,?,?,?)";
@@ -21,7 +21,7 @@ public class ProductService {
         product.setId(id);
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      throw new RuntimeException(e);
     }
   }
 
@@ -41,7 +41,7 @@ public class ProductService {
         return product;
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      throw new RuntimeException("Failed to find product with id " + id);
     }
     return null;
   }
@@ -51,7 +51,7 @@ public class ProductService {
     try (PreparedStatement statement = connection.prepareStatement(sql)) {
       executeQuery(statement, product);
     } catch (SQLException e) {
-      e.printStackTrace();
+      throw new RuntimeException("Failed to update product with id " + id);
     }
   }
 
@@ -60,7 +60,7 @@ public class ProductService {
     try {
       connection.createStatement().executeUpdate(sql);
     } catch (SQLException e) {
-      e.printStackTrace();
+      throw new RuntimeException("Failed to delete product with id " + id);
     }
   }
 
@@ -74,7 +74,7 @@ public class ProductService {
         totalQuantity = resultSet.getInt("totalQuantity");
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      throw new RuntimeException("Failed to find sum of products");
     }
 
     return totalQuantity;
@@ -89,7 +89,7 @@ public class ProductService {
         maxPrice = resultSet.getInt("maxPrice");
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      throw new RuntimeException("Failed to find max price");
     }
 
     return maxPrice;
@@ -104,7 +104,7 @@ public class ProductService {
         minPrice = resultSet.getInt("minPrice");
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      throw new RuntimeException("Failed to find min price");
     }
 
     return minPrice;
@@ -119,7 +119,7 @@ public class ProductService {
         avgPrice = resultSet.getInt("avgPrice");
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      throw new RuntimeException("Failed to find avg price");
     }
 
     return avgPrice;
