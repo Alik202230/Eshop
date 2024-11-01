@@ -51,6 +51,9 @@ public class Main {
           break;
         case "10":
           printAvgPriceOfProduct();
+          break;
+        default:
+          System.out.println("Invalid command");
       }
     }
   }
